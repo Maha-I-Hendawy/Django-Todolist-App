@@ -1,0 +1,20 @@
+{% extends 'todos/layout.html' %}
+	    
+
+{% block content %}
+   <h1>Home Page</h1>
+    
+      <form action="" method="post">
+         {% csrf_token %}
+         {{ form.as_table }}
+         <input type="submit" value="Add">
+      </form>
+        
+     	
+     <ul>
+      {% for todo in todos %}
+         <li>{{ todo }}  <a href="{% url 'todo-update' id=todo.id %}">update</a> <a href="{% url 'todo-delete' id=todo.id %}">delete</a></li>
+      {% endfor %}
+     </ul>
+
+{% endblock %}
