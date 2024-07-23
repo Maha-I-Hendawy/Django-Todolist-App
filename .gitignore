@@ -2,3 +2,5 @@
 /todolistapp/todolistapp/__pycache__/
 /todolistapp/todos/__pycache__/
 
+/todolistapp/todos/migrations/__pycache__/
+

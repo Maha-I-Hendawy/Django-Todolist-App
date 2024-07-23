@@ -12,7 +12,7 @@ def home(request):
 			todo = form.cleaned_data['todo']
 			completed = form.cleaned_data['completed']
 			#print(todo, completed)
-			mytodo = Todo(todo=todo)
+			mytodo = Todo(todo=todo, complated=completed)
 			mytodo.save()
 			return redirect('/')
 
@@ -28,12 +28,12 @@ def home(request):
 
 def update(request, id):
 	todo = Todo.objects.get(pk=id)
-	form = TodoForm()
+	form = TodoForm(initial={'todo': todo.todo, 'completed': todo.complated})
 	if request.method == 'POST':
 		form = TodoForm(request.POST)
 		if form.is_valid():
 			todo.todo = form.cleaned_data['todo']
-			todo.completed = form.cleaned_data['completed']
+			todo.complated = form.cleaned_data['completed']
 			todo.save()
 			return redirect('/')
     	
