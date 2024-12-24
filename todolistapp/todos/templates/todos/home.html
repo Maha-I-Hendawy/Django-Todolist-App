@@ -2,18 +2,17 @@
 	    
 
 {% block content %}
-   <h1>Home Page</h1>
-    
+    <div class="jumbotron text-center">
       <form action="" method="post">
          {% csrf_token %}
          {{ form.as_table }}
-         <input type="submit" value="Add">
+         <input type="submit" value="Add" class="btn btn-primary">
       </form>
-        
+   </div>  
      	
-     <ul>
+     <ul class="list-group">
       {% for todo in todos %}
-         <li>{{ todo }}  <a href="{% url 'todo-update' id=todo.id %}">update</a> <a href="{% url 'todo-delete' id=todo.id %}">delete</a></li>
+         <li class="list-group-item">{{ todo }}  <a href="{% url 'todo-delete' id=todo.id %}" class="btn btn-danger navbar-right">Delete</a><a href="{% url 'todo-update' id=todo.id %}" class="btn btn-info navbar-right">Update</a></li>
       {% endfor %}
      </ul>
 
